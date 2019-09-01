@@ -17,7 +17,7 @@
 
           <h3>Preencha abaixo</h3>
 
-          <form @submit.prevent="enviar" >
+          <form @submit.prevent="enviar" @reset="resetar">
 
             <div class="form-group">
               <label>Nome:</label>
@@ -158,7 +158,7 @@
 
             </div>
 
-            <button class="btn btn-secondary">Resetar</button>
+            <button class="btn btn-secondary" type="reset" >Resetar</button>
             <!-- <button 
                 class="btn btn-success"  
                 type="button"
@@ -233,6 +233,10 @@ export default {
   data(){
     return {
       desenvolvedor:{
+
+      },
+
+      valoresPadroes:{
         nome: 'rafael ',
         email: 'rafael@teste',
         idade: 33,
@@ -258,7 +262,13 @@ export default {
 
       console.log( 'Formulario enviado',  formularioEnvio); 
 
+    },
+    resetar(){
+      this.desenvolvedor = Object.assign({}, this.valoresPadroes)
     }
+  },
+  created(){  
+    this.resetar()
   }
 }
 </script>
