@@ -87,22 +87,39 @@
               <p>Tecnologias:</p>
 
               <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input" value="JavaScript">
+                <input 
+                  type="checkbox" 
+                  v-model="desenvolvedor.tecnologias"
+                  class="form-check-input"
+                  value="JavaScript">
                 <label class="form-check-label">JavaScript</label>
               </div>
 
-              <div class="form-check form-check-inline" value="Vue JS">
-                <input type="checkbox" class="form-check-input">
-                <label class="form-check-label">Vue JS</label>
+              <div class="form-check form-check-inline" >
+                <input 
+                  type="checkbox" 
+                  v-model="desenvolvedor.tecnologias"
+                  class="form-check-input"
+                  value="Vue JS"
+                  >
+                                  <label class="form-check-label">Vue JS</label>
               </div>
 
               <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input" value="Vuex">
+                <input 
+                  type="checkbox" 
+                  v-model="desenvolvedor.tecnologias"
+                  class="form-check-input"
+                  value="Vuex">
                 <label class="form-check-label">Vuex</label>
               </div>
 
               <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input" value="Vue Router">
+                <input 
+                  type="checkbox" 
+                  v-model="desenvolvedor.tecnologias"
+                  class="form-check-input"
+                  value="Vue Router">
                 <label class="form-check-label">Vue Router</label>
               </div>
 
@@ -121,7 +138,13 @@
             <div class="form-group">
 
               <div class="form-check form-check-inline">
-                <input type="checkbox" class="form-check-input">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input"
+                  v-model="desenvolvedor.notificacoes"
+                  true-value="Sim"
+                  false-value="Não"
+                  >
                 <label class="form-check-label">Receber notificações por email</label>
               </div>
 
@@ -149,13 +172,24 @@
               <li class="list-group-item"><strong>Idade:</strong>{{desenvolvedor.idade}}</li>
               <li class="list-group-item"><strong>Gênero:</strong>{{desenvolvedor.genero}}</li>
               <li class="list-group-item"><strong>Ocupação:</strong> </li>
-              <li class="list-group-item"><strong>Tecnologias:</strong> </li>
+              <li class="list-group-item">
+                <strong>Tecnologias:</strong> 
+                <ul>
+                  <li 
+                    v-for="(tecnologia, indice) in desenvolvedor.tecnologias"
+                    :key="indice" >
+                    {{tecnologia}}
+                  </li>
+                </ul>
+              </li>
               <li class="list-group-item"><strong>Biografia:</strong> 
                 <pre>
                   {{desenvolvedor.biografia}}
                 </pre>
               </li>
-              <li class="list-group-item"><strong>Receber notificações?</strong> </li>
+              <li class="list-group-item"><strong>Receber notificações?</strong> 
+                {{desenvolvedor.notificacoes}}
+              </li>
             </ul>
 
             <div class="card-header">Model</div>
@@ -184,7 +218,9 @@ export default {
         email: 'rafael@teste',
         idade: 33,
         biografia:'It is a long established fact that a reader will be distracted by the readable content.',
-        genero:'Masculino'
+        genero:'Masculino',
+        tecnologias: [],
+        notificacoes: 'Não'
       }
     }
   }
