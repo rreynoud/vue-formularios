@@ -77,8 +77,16 @@
 
             <div class="form-group">
               <label>Ocupação:</label>
-              <select class="form-control" placeholder="Seu email">
-                <option>Selecione uma opção...</option>
+              <select 
+                v-model="desenvolvedor.ocupacao"
+                class="form-control" 
+                placeholder="Seu email">
+                <option 
+                v-for="(ocupacao, indice) in ocupacoes"
+                :key="indice"
+                :selected="ocupacao === 'quarta'"
+                >
+                {{ocupacao}}</option>
               </select>
             </div>  
 
@@ -171,7 +179,7 @@
               <li class="list-group-item"><strong>Email:</strong>{{desenvolvedor.email}}</li>
               <li class="list-group-item"><strong>Idade:</strong>{{desenvolvedor.idade}}</li>
               <li class="list-group-item"><strong>Gênero:</strong>{{desenvolvedor.genero}}</li>
-              <li class="list-group-item"><strong>Ocupação:</strong> </li>
+              <li class="list-group-item"><strong>Ocupação:</strong>{{desenvolvedor.ocupacao}}</li>
               <li class="list-group-item">
                 <strong>Tecnologias:</strong> 
                 <ul>
@@ -220,8 +228,17 @@ export default {
         biografia:'It is a long established fact that a reader will be distracted by the readable content.',
         genero:'Masculino',
         tecnologias: [],
-        notificacoes: 'Não'
-      }
+        notificacoes: 'Não',
+        ocupacao:'sexta'
+      },
+      ocupacoes: [
+        'Desenvolvedor Front End',
+        'segunda',
+        'terceira',
+        'quarta',
+        'quinta',
+        'sexta'
+      ]
     }
   }
 }
