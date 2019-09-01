@@ -17,7 +17,7 @@
 
           <h3>Preencha abaixo</h3>
 
-          <form>
+          <form @submit.prevent="enviar" >
 
             <div class="form-group">
               <label>Nome:</label>
@@ -159,7 +159,18 @@
             </div>
 
             <button class="btn btn-secondary">Resetar</button>
-            <button class="btn btn-success">Enviar</button>
+            <!-- <button 
+                class="btn btn-success"  
+                type="button"
+                @click="enviar"
+                >Enviar</button> -->
+
+            <button 
+                class="btn btn-success"  
+                type="submit"
+                
+                >Enviar</button>
+
 
           </form>
 
@@ -239,6 +250,14 @@ export default {
         'quinta',
         'sexta'
       ]
+    }
+  },
+  methods:{
+    enviar(event){
+      const formularioEnvio = Object.assign({}, this.desenvolvedor)
+
+      console.log( 'Formulario enviado',  formularioEnvio); 
+
     }
   }
 }
